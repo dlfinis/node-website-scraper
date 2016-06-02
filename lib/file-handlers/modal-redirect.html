@@ -91,13 +91,9 @@
         height: 30px !important;
         text-align: right!important;
     }
+
     .modal-footer button{
         margin: 2.5px 5px!important;
-    }
-
-    .modal-footer button:focus{
-      background: #E1EAFF;
-      color:#fff;
     }
 </style>
 
@@ -130,15 +126,15 @@ function redirect(obj,event)
 {
 
 event.preventDefault();
+event.stopPropagation();
 // Get the modal
 var modal = document.getElementById('redirect');
 
 var ok = document.getElementById('ok');
 var cancel = document.getElementById('cancel');
 
-    console.log(modal);
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("xclose")[0];
 
     modal.style.display = "block";
 
@@ -150,6 +146,7 @@ var span = document.getElementsByClassName("close")[0];
     // When the user clicks on <span> (x), close the modal
     ok.onclick = function() {
       var win = window.open(obj.href, '_blank'); win.focus();
+      modal.style.display = "none";
     }
 
         // When the user clicks on <span> (x), close the modal
