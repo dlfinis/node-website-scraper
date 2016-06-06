@@ -96,6 +96,23 @@
     .modal-footer button{
         margin: 2.5px 5px!important;
     }
+
+    #messagebox {
+    text-align : center;
+    position : absolute;
+    width : 300px;
+    height : 300px;
+    background : yellow;
+    color : black;
+    top : 50%;
+    left : 50%;
+    margin : -150px;
+    z-index : 5;
+    }
+
+    #messagebox #message {
+        overflow : auto;
+    }
 </style>
 
 <!-- The Modal -->
@@ -162,12 +179,13 @@ window.onclick = function(event) {
 }
 }
 
+document.getElementsByTagName('head')[0].appendChild('<meta charset="utf-8">');
 function xredirect(obj,event)
 {
     event.preventDefault();
     event.stopPropagation();
-    document.getElementsByTagName('head')[0].appendChild('<meta charset="utf-8">');
-    var message = "Va a salir de la aplicación.\n¿Desea ser dirigido a la página?";
+
+    var message = "\u2022Va a salir de la aplicaci\xf3n.\u2022\n\xBFDesea visualizar la p\xe1gina externamente?";
     var r = confirm(message);
     if (r == true) {
         var win = window.open(obj.href, '_blank'); win.focus();
