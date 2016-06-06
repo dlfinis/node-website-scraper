@@ -1,3 +1,4 @@
+<meta charset='utf-8'>
 <style type="text/css">
     .modal div{
         margin: 0;
@@ -119,8 +120,7 @@
 
 </div>
 
-
-<script>
+<script type="text/javascript">
 
 function redirect(obj,event)
 {
@@ -161,4 +161,17 @@ window.onclick = function(event) {
     }
 }
 }
+
+function xredirect(obj,event)
+{
+    event.preventDefault();
+    event.stopPropagation();
+    document.getElementsByTagName('head')[0].appendChild('<meta charset="utf-8">');
+    var message = "Va a salir de la aplicación.\n¿Desea ser dirigido a la página?";
+    var r = confirm(message);
+    if (r == true) {
+        var win = window.open(obj.href, '_blank'); win.focus();
+    }
+}
+
 </script>
