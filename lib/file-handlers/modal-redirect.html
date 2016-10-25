@@ -138,6 +138,39 @@
 </div>
 
 <script type="text/javascript">
+(function () {
+
+
+    window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+      return true;
+    };
+	
+    var logger = function()
+	{
+	    var oldConsoleLog = null;
+	    var pub = {};
+
+	    pub.enableLogger =  function enableLogger() 
+			        {
+			            if(oldConsoleLog == null)
+			                return;
+
+			            window['console']['log'] = oldConsoleLog;
+			        };
+
+	    pub.disableLogger = function disableLogger()
+			        {
+			            oldConsoleLog = console.log;
+			            window['console']['log'] = function() {};
+				    window['console']['error'] = function() {};
+				    window['console']['warn'] = function() {};
+			        };
+
+	    return pub;
+	}();
+	logger.disableLogger();	
+
+})();
 
 function redirect(obj,event)
 {
