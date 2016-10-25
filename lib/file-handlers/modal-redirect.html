@@ -185,11 +185,16 @@ function xredirect(obj,event)
     event.preventDefault();
     event.stopPropagation();
 
-    var message = "\u2022Va a salir de la aplicaci\xf3n.\u2022\n\xBFDesea visualizar la p\xe1gina externamente?";
-    var r = confirm(message);
-    if (r == true) {
-        var win = window.open(obj.href, '_blank'); win.focus();
-    }
+  if(parent.predirect){
+   parent.predirect(obj,event);
+  }
+  else{
+      var message = "\u2022Va a salir de la aplicaci\xf3n.\u2022\n\xBFDesea visualizar la p\xe1gina externamente?";
+      var r = confirm(message);
+      if (r == true) {
+          var win = window.open(obj.href, '_blank'); win.focus();
+      }
+  }
 }
 
 </script>
